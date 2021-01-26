@@ -1,0 +1,15 @@
+@charset "utf-8";
+  .current-year-container h3 {
+	font-size: 1.4em;
+	text-align: right;
+	margin-top: 20px;
+	font-weight: 600;
+}
+/*
+#teacher_dashboard .current-year-container h3 span{
+	font-weight: 400;
+}
+#teacher_dashboard #section-devider{
+	border-bottom: 1px solid #333;
+	margin: 0px 0px 25px;
+} */

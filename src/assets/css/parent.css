@@ -1,0 +1,127 @@
+@charset "utf-8";
+#dynamic-buttons a.btn{
+	color: #444;
+	border: 1px solid #333;
+	background: #fff;
+	border-radius: 0;
+	margin-top: 11px;
+	padding: 3px 10px;
+	margin-right: 10px;
+}
+
+#in-logo{
+	text-align: right;
+}
+#current-term form{
+	padding-top: 20px;
+}
+#current-term form select{
+	background: #5d1933;
+	color: #fff;
+	margin-bottom: 15px;
+	border: 1px solid #333;
+	padding: 4px 10px;
+} 
+#current-term p#current-year {
+	font-size: 2.1em;
+	font-weight: 600;
+}
+.full-term-selct form select{
+	min-height: 28px;
+	border: 1px solid #333;
+	padding: 3px 10px;
+}
+.full-term-selct{
+	text-align: right;
+}
+body#parent .welcome .text h3{
+font-size: 1.5em;	
+}
+body#parent .welcome .text h3 span{
+	font-weight: 600;
+}
+#section-devider{
+	border-bottom: 1px solid #333;
+	margin: 25px 0px;
+}
+#statistics{
+	border: 1px solid #333;
+	padding: 20px;
+}
+#statistics .col-15{
+	text-align: center;
+	border-right: 1px solid #333;
+}
+#statistics .col-15:last-child{
+	border: none;
+}
+#statistics .col-15 p{
+	font-size: 1.2em;
+}
+#statistics .col-15 h3{
+	font-size: 2.8em;
+	font-weight: 600;
+}
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, 
+.table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, 
+.table-bordered > thead > tr > td, .table-bordered > thead > tr > th{
+	border: 1px solid #2f2f2f;
+}
+.table-bordered {
+	border: 1px solid #2f2f2f;
+	margin-top: 20px;
+}
+.table-bordered thead{
+	background: #dfdfdf;
+}
+#principal-comments .comments-wrapper{
+	border: 1px solid #2f2f2f;
+	min-height: 150px;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+#principal-comments .comments-wrapper h6{
+	font-weight: 600;
+}
+.dashboard .navigation{
+	min-height: 1030px;
+}
+
+.full-term-selct .input-group.date{
+	display: flex;
+}
+.full-term-selct .input-group.date .form-control{
+	width: 110px;
+	border-radius: 0;
+	border-color: #4d4d4d;
+	margin-right: 15px;
+}
+.full-term-selct .input-group.date .form-control:last-child{
+	margin-right: 0;
+}
+.full-term-selct .input-group.date span {
+	margin-top: 5px;
+	margin-right: 3px;
+	font-size: 1.2em;
+}
+.full-term-selct .input-group-addon{
+	padding: 8px 18px 6px 6px;
+	background-color: #5d1933;
+	border: 1px solid #4d4d4d;
+	color: #fff;
+}
+@media(min-width: 768px){
+	#statistics .col-15{width: 20%;}
+}
+@media(min-width: 992px){
+  #parent_dashboard{padding-right: 60px;}
+}
+@media(max-width: 540px){
+	#statistics .col-15{border-right: none;border-bottom: 1px solid #333;margin: 20px 31px;}
+	.full-term-selct .input-group.date .form-control{width: 100%;padding-left: 35px;}
+	.full-term-selct .input-group.date .form-control:last-child{margin-right: 15px;margin-bottom: 30px;}
+	.full-term-selct .input-group.date span{display: block;width: 96%;text-align: left;margin-top: 15px;}
+	.full-term-selct .input-group-addon{min-height: 34px;float: left;position: relative;margin-bottom: -54px;z-index: 9;}
+	.full-term-selct .input-group.date{display: block;}
+	.current-year-container{text-align: center;}
+}

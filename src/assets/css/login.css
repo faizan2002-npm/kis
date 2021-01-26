@@ -1,0 +1,65 @@
+.login-area{
+	background: #686868;
+	min-height: 700px;
+	text-align: left;
+}
+.login-area .container{
+	background: #535353;
+}
+.login-area .welcome{
+	text-align: left;
+}
+.login-area .welcome h2{
+	color: #fff;
+	margin-bottom: 30px;
+}
+.login-area .welcome p{
+	color: #fff;
+	font-size: 1.5em;
+	line-height: 29px;
+}
+.login-area .input-group{
+	display: flex;
+}
+.login-area .input-group input.form-control{
+	float: none;
+	display: inline-block;
+	width: 90%;
+	min-height: 45px;
+	border-radius: 0;
+}
+.login-area .input-group .input-group-prepend{
+	display: inline-block;
+	background: #5d1933;
+	padding: 10px 16px;
+	min-height: 45px;
+	font-size: 1.6em;
+	color: #fff;
+	border-radius: 0;
+}
+.login-area a.btn{
+	color: #fff;
+} 
+.login-area .form-group {
+	margin-bottom: 35px;
+}
+.login-area form .form-group.login-btn-area{
+	width: 100%;
+	margin-bottom: 15px;
+}
+.login-area .form-group button.btn{
+	background: #5d1933;
+	border: transparent;
+	border-radius: 0;
+	min-height: 45px;
+}
+
+@media(min-width: 768px){
+	.login-area{padding: 100px 100px 160px 100px;display: flex;}
+	.login-area .container{padding: 90px 120px 90px 60px;}
+	#kgaswe-login-logo{min-height: 200px;padding-top: 100px;}
+}
+@media(max-width: 540px){
+	.login-area{min-height: 550px;}
+	.login-area .container .row{padding: 30px 0;}
+}
