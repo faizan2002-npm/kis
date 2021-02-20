@@ -139,10 +139,10 @@ function Parents(props) {
   return (
     <>
       <Layout>
-        <section class="heading">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-6" id="dynamic-buttons">
+        <section className="heading">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-6" id="dynamic-buttons">
                 <TableTools
                   href="#"
                   text="Prnt"
@@ -165,107 +165,109 @@ function Parents(props) {
             </div>
           </div>
         </section>
-        <div class="row current-year-container">
-          <div class="col-md-6" id="current-term">
-            <form>
-              <select>
-                <option>Current School Year</option>
-                <option>YEAR 2020</option>
-                <option>YEAR 2021</option>
-              </select>
-            </form>
-            <p id="current-year">YEAR 2020</p>
+        <div className="px-3">
+          <div className="row current-year-container">
+            <div className="col-md-6" id="current-term">
+              <form>
+                <select>
+                  <option>Current School Year</option>
+                  <option>YEAR 2020</option>
+                  <option>YEAR 2021</option>
+                </select>
+              </form>
+              <p id="current-year">YEAR 2020</p>
+            </div>
+            <div className="col-md-6" id="in-logo">
+              <img src={SiteSetting.SiteSetting[0].Logo} alt="Kgaswe" />
+            </div>
           </div>
-          <div class="col-md-6" id="in-logo">
-            <img src={SiteSetting.SiteSetting[0].Logo} alt="Kgaswe" />
+          <div className="row" id="section-devider">
+            <div className="col-md-12">
+              <div className="devider"></div>
+            </div>
           </div>
-        </div>
-        <div class="row" id="section-devider">
-          <div class="col-md-12">
-            <div class="devider"></div>
-          </div>
-        </div>
-        <div class="row welcome">
-          <div class="col-md-6 text">
-            <h3>
-              <span>Academic Report</span> - Student Full Name
-            </h3>
-          </div>
-          <div class="col-md-6 full-term-selct">
-            <div class="row login-area p-0 bg-light">
-              <div class="col-md-6">
-                <Field
-                  element="input"
-                  name="filter_from"
-                  type="text"
-                  placeholder="Filter From: "
-                  className=""
-                  icon={true}
-                  iconName="fa fa-calendar"
-                  label={false}
-                />
-              </div>
-              <div class="col-md-6">
-                <Field
-                  element="input"
-                  name="last_date"
-                  type="text"
-                  placeholder="Last Date: "
-                  className=""
-                  icon={true}
-                  iconName="fa fa-calendar"
-                  label={false}
-                />
+          <div className="row welcome">
+            <div className="col-md-6 text">
+              <h3>
+                <span>Academic Report</span> - Student Full Name
+              </h3>
+            </div>
+            <div className="col-md-6 full-term-selct">
+              <div className="row login-area p-0 bg-light">
+                <div className="col-md-6">
+                  <Field
+                    element="input"
+                    name="filter_from"
+                    type="text"
+                    placeholder="Filter From: "
+                    className=""
+                    icon={true}
+                    iconName="fa fa-calendar"
+                    label={false}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <Field
+                    element="input"
+                    name="last_date"
+                    type="text"
+                    placeholder="Last Date: "
+                    className=""
+                    icon={true}
+                    iconName="fa fa-calendar"
+                    label={false}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div id="statistics">
-          <div class="row">
-            {result.map((e, index) => (
-              <div class="col-md-3 col-15" key={`id_${index}_${e._id}`}>
-                <p>{e.text}</p>
-                <h3>{e.value}</h3>
-              </div>
-            ))}
+          <div id="statistics">
+            <div className="row">
+              {result.map((e, index) => (
+                <div className="col-md-3 col-15" key={`id_${index}_${e._id}`}>
+                  <p>{e.text}</p>
+                  <h3>{e.value}</h3>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    {tableHead.map((e, index) => (
-                      <th scope="col" key={`id_${index}_${e._id}`}>
-                        {e.text}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {tableData.map((e, index) => (
-                    <tr key={`id_${index}_${e._id}`}>
-                      <th scope="row">{e.subject}</th>
-                      <td>{e.first_term_marks}</td>
-                      <td>{e.second_term_marks}</td>
-                      <td>{e.third_term_marks}</td>
-                      <td>{e.final_term_marks}</td>
+          <div className="row">
+            <div className="col-md-12">
+              <div className="table-responsive">
+                <table className="table table-bordered">
+                  <thead>
+                    <tr>
+                      {tableHead.map((e, index) => (
+                        <th scope="col" key={`id_${index}_${e._id}`}>
+                          {e.text}
+                        </th>
+                      ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {tableData.map((e, index) => (
+                      <tr key={`id_${index}_${e._id}`}>
+                        <th scope="row">{e.subject}</th>
+                        <td>{e.first_term_marks}</td>
+                        <td>{e.second_term_marks}</td>
+                        <td>{e.third_term_marks}</td>
+                        <td>{e.final_term_marks}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row" id="principal-comments">
-          <div class="col-md-12">
-            <div class="comments-wrapper">
-              <h6>Overall comments by Principal</h6>
-              <p>
-                Disappointing results for Mosako. He must reflect on these
-                results and ensure they are not repeated
-              </p>
+          <div className="row" id="principal-comments">
+            <div className="col-md-12">
+              <div className="comments-wrapper">
+                <h6>Overall comments by Principal</h6>
+                <p>
+                  Disappointing results for Mosako. He must reflect on these
+                  results and ensure they are not repeated
+                </p>
+              </div>
             </div>
           </div>
         </div>

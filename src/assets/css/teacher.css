@@ -6,10 +6,64 @@
 	font-weight: 600;
 }
 /*
-#teacher_dashboard .current-year-container h3 span{
+ .current-year-container h3 span{
 	font-weight: 400;
 }
-#teacher_dashboard #section-devider{
+ #section-devider{
 	border-bottom: 1px solid #333;
 	margin: 0px 0px 25px;
 } */
+ .current-year-container h3 {
+	font-size: 1.4em;
+	text-align: right;
+	margin-top: 20px;
+	font-weight: 600;
+}
+ .current-year-container h3 span{
+	font-weight: 400;
+}
+ #section-devider{
+	border-bottom: 1px solid #333;
+	margin: 0px 0px 25px;
+}
+.search-filter .form-control{
+	display: inline-block;
+	position: relative;
+	float: none;
+	width: 65%;
+	border: 1px solid #333;
+	border-radius: 0;
+}
+.search-filter a.btn{
+	margin-top: 0;
+	padding: 6.5px 10px;
+	vertical-align: top;
+	color: #444;
+	border: 1px solid #333;
+	background: #fff;
+	border-radius: 0;
+}
+#function-btns a{
+	color: #333;
+	margin-left: 15px;
+}
+#function-btns a i.fa{
+	font-size: 1.5em;
+	padding: 6px;
+	border: 1px solid #333;
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+	text-align: center;
+	margin-left: 5px;
+}
+#function-btns{
+	text-align: right;
+}
+.teacher-list-head{
+	padding: 30px 0 20px;
+}
+
+@media(max-width: 540px){
+	 .current-year-container h3{text-align: center;}
+}

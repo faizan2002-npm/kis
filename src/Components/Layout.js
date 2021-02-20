@@ -5,13 +5,13 @@ function Layout({ children }) {
   return (
     <>
       <Header />
-      <section class="dashboard">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-3 navigation">
+      <section className="dashboard">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-3 navigation">
               <Menu />
             </div>
-            <div class="col-md-9" id="main_dashboard">
+            <div className="col-md-9 px-0" id="main_dashboard">
               {children}
             </div>
           </div>

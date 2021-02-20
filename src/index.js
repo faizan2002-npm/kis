@@ -9,10 +9,16 @@ import "./assets/css/login.css";
 import "./assets/css/parent.css";
 import "./assets/css/teacher.css";
 import "./assets/css/responsive.css";
+import "./assets/css/details.css";
 // import "./assets/lib/jquery/jquery.min.js";
 // import "./assets/lib/bootstrap/js/bootstrap.min.js";
 // import "./assets/lib/wow/wow.min.js";
 // import "./assets/lib/appear/jquery.appear.js";
+const currentHost = window.location.pathname;
+
+// console.log(currentHost.replace(/\//g, ""));
+var element = document.getElementById("root");
+element.classList.add(`${currentHost.replace(/\//g, "")}-page`);
 
 ReactDOM.render(
   <React.StrictMode>

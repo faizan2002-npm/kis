@@ -13,13 +13,13 @@ function Field({
   return (
     <>
       {element == "input" ? (
-        <div class="form-group">
+        <div className="form-group">
           {label ? <label for={name}>{placeholder}</label> : ""}
-          <div class="input-group">
+          <div className="input-group">
             {icon ? (
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class={iconName}></i>
+              <div className="input-group-prepend">
+                <span className="input-group-text">
+                  <i className={iconName}></i>
                 </span>
               </div>
             ) : (
@@ -28,15 +28,15 @@ function Field({
             <input
               name={name}
               id={name}
-              class={`form-control ${className}`}
+              className={`form-control ${className}`}
               placeholder={label ? "" : placeholder}
               type={type}
             />
           </div>
         </div>
       ) : (
-        <div class="form-group login-btn-area">
-          <button type={btnType} class="btn btn-primary btn-block">
+        <div className="form-group login-btn-area">
+          <button type={btnType} className="btn btn-primary btn-block">
             {btnText}
           </button>
         </div>

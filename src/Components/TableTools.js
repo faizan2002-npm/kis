@@ -1,8 +1,8 @@
 function TableTools({ href, icon, iconName, text }) {
   return (
     <>
-      <a class="btn" href={href}>
-        {icon ? <i class={iconName}></i> : ""}
+      <a className="btn" href={href}>
+        {icon ? <i className={iconName}></i> : ""}
         {text}
       </a>
     </>

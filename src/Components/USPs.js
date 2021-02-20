@@ -1,10 +1,10 @@
 function USPs({ icon, iconName, text, href }) {
   return (
     <>
-      <div class="col-md-3">
-        <div class="icons">
+      <div className="col-md-3">
+        <div className="icons">
           <a id="main-btns" href={href}>
-            {icon ? <i class={iconName}></i> : ""}
+            {icon ? <i className={iconName}></i> : ""}
             <span>{text}</span>
           </a>
         </div>

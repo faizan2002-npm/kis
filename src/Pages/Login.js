@@ -3,13 +3,13 @@ import Field from "./../Components/Field";
 function Login(props) {
   return (
     <>
-      <div id="kgaswe-login-logo" class="text-center">
+      <div id="kgaswe-login-logo" className="text-center">
         <img src={SiteSetting.SiteSetting[0].Logo} alt="Kgaswe" />
       </div>
-      <div class="login-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 welcome">
+      <div className="login-area">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 welcome">
               <h2>
                 Welcome to
                 <br />
@@ -22,9 +22,9 @@ function Login(props) {
                 by just login into the Online Reporting System
               </p>
             </div>
-            <div class="col-md-6">
-              <div class="card">
-                <article class="card-body">
+            <div className="col-md-6">
+              <div className="card">
+                <article className="card-body">
                   <form>
                     <Field
                       element="input"
@@ -49,8 +49,8 @@ function Login(props) {
 
                     <Field element="button" btnType="submit" btnText="Submit" />
 
-                    <p class="text-center">
-                      <a href="#" class="btn">
+                    <p className="text-center">
+                      <a href="#" className="btn">
                         Forgot password?
                       </a>
                     </p>
