@@ -160,7 +160,7 @@ function StudentList(props) {
         <div className="px-3">
           <div className="row teacher-list-head" id="teacher_dashboard">
             <div className="col-md-6 text" id="List_title">
-              <h2>2020 Student List</h2>
+              <h2>All Students in school | 2021</h2>
             </div>
             <div className="col-md-6" id="function-btns">
               <p>

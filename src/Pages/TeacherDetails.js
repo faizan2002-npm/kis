@@ -1,9 +1,7 @@
 import Layout from "./../Components/Layout";
 import TableTools from "./../Components/TableTools";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
-function Student(props) {
+function TeacherDetails(props) {
   const [StudentData, setStudentData] = useState([
     {
       _parentID: 1,
@@ -72,203 +70,28 @@ function Student(props) {
               subContent: [
                 {
                   _subSubID: 1,
-                  title: "PHYSICAL ADDRESS:",
-                  inputData: [
-                    {
-                      _inputID: 1,
-                      label: "Street/Ward:",
-                      name: "name",
-                      type: "text",
-                      placeholder: "Street/Ward",
-                      value: "1342 Military Rd",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Town/Village:",
-                      name: "surname",
-                      type: "text",
-                      placeholder: "Town/Village",
-                      value: "Niagara falls",
-                    },
-                  ],
-                },
-                {
-                  _subSubID: 2,
-                  title: "POSTAL ADDRESS:",
-                  inputData: [
-                    {
-                      _inputID: 1,
-                      label: "P O Box/Private Bag:",
-                      name: "gender",
-                      type: "text",
-                      placeholder: "P O Box/Private Bag",
-                      value: "1342 Military Rd",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Town/Village:",
-                      name: "dob",
-                      type: "text",
-                      placeholder: "Town/Village",
-                      value: "Niagara falls",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      _parentID: 2,
-      parentContent: [
-        {
-          _id: 1,
-          content: [
-            {
-              _subID: 1,
-              title: "PARENT / NEXT OF KIN",
-              subContent: [
-                {
-                  _subSubID: 1,
                   title: "",
                   inputData: [
                     {
                       _inputID: 1,
-                      label: "Name:",
+                      label: "Mobile Number:",
                       name: "name",
-                      type: "text",
-                      placeholder: "Parent Name",
-                      value: "Mathor",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Surname:",
-                      name: "surname",
-                      type: "text",
-                      placeholder: "Parent Name",
-                      value: "Andrea",
-                    },
-                  ],
-                },
-                {
-                  _subSubID: 2,
-                  title: "",
-                  inputData: [
-                    {
-                      _inputID: 1,
-                      label: "Relationship:",
-                      name: "gender",
-                      type: "text",
-                      placeholder: "Relationship",
-                      value: "Daughter",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Date of Birth:",
-                      name: "dob",
-                      type: "text",
-                      placeholder: "Date of Birth",
-                      value: "22 August 1994",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          _id: 2,
-          content: [
-            {
-              _subID: 1,
-              title: "CONTACT DETAILS",
-              subContent: [
-                {
-                  _subSubID: 1,
-                  title: "PHYSICAL ADDRESS:",
-                  inputData: [
-                    {
-                      _inputID: 1,
-                      label: "Street/Ward:",
-                      name: "name",
-                      type: "text",
-                      placeholder: "Street/Ward",
-                      value: "1342 Military Rd",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Town/Village:",
-                      name: "surname",
-                      type: "text",
-                      placeholder: "Town/Village",
-                      value: "Niagara falls",
-                    },
-                  ],
-                },
-                {
-                  _subSubID: 2,
-                  title: "POSTAL ADDRESS:",
-                  inputData: [
-                    {
-                      _inputID: 1,
-                      label: "P O Box/Private Bag:",
-                      name: "gender",
-                      type: "text",
-                      placeholder: "P O Box/Private Bag",
-                      value: "1342 Military Rd",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Town/Village:",
-                      name: "dob",
-                      type: "text",
-                      placeholder: "Town/Village",
-                      value: "Niagara falls",
-                    },
-                  ],
-                },
-                {
-                  _subSubID: 3,
-                  title: "POSTAL ADDRESS:",
-                  inputData: [
-                    {
-                      _inputID: 1,
-                      label: "Telephone(Home)",
-                      name: "gender",
-                      type: "text",
-                      placeholder: "Telephone",
-                      value: "00000000",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Mobile:",
-                      name: "dob",
                       type: "text",
                       placeholder: "Mobile Number",
-                      value: "00000000",
+                      value: "000000000",
                     },
                   ],
                 },
                 {
-                  _subSubID: 4,
+                  _subSubID: 2,
                   title: "",
                   inputData: [
                     {
                       _inputID: 1,
-                      label: "Telephone(Work)",
+                      label: "Email:",
                       name: "gender",
                       type: "text",
-                      placeholder: "Telephone",
-                      value: "00000000",
-                    },
-                    {
-                      _inputID: 2,
-                      label: "Email:",
-                      name: "dob",
-                      type: "text",
-                      placeholder: "Email Address",
+                      placeholder: "Email",
                       value: "demo@mail.com",
                     },
                   ],
@@ -280,7 +103,7 @@ function Student(props) {
       ],
     },
     {
-      _parentID: 3,
+      _parentID: 2,
       parentContent: [
         {
           _id: 1,
@@ -381,17 +204,16 @@ function Student(props) {
                 <i className="fa fa-user-circle"></i>
               </div>
               <div className="student_creeds">
-                <h3 id="full_S_name">Full Student Name</h3>
-                <p>Student Number: KS0001</p>
+                <h3 id="full_S_name " className="">
+                  Teacher Names
+                </h3>
+                <p>Teacher Number: KS0001</p>
               </div>
             </div>
             <div className="col-md-7" id="function-btns">
-              <a href="#" className="btn-click">
-                View Academic Record
+              <a href="/teacher-list" className="btn-click">
+                Back to Teacher List
               </a>
-              <Link to="/student-list" className="btn-click">
-                Back to Student List
-              </Link>
               <p>
                 <a href="#">
                   Edit <i className="fa fa-edit"></i>
@@ -444,19 +266,16 @@ function Student(props) {
             ))}
           </form>
           <div className="row actions mx-0">
-            <div className="col-md-12">
+            <div className="col-md-12 text-center">
               <a href="#" className="btn-click">
-                View Academic Record
+                Edit Teacher Info
               </a>
               <a href="#" className="btn-click">
-                Edit Student Info
+                Delete
               </a>
               <a href="#" className="btn-click">
-                Delete Record
+                Back to Teacher List
               </a>
-              <Link to="/student-list" className="btn-click">
-                Back to Student List
-              </Link>
             </div>
           </div>
         </div>
@@ -465,4 +284,4 @@ function Student(props) {
   );
 }
 
-export default Student;
+export default TeacherDetails;
