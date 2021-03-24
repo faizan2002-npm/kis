@@ -73,7 +73,7 @@ function MyClass(props) {
         <div className="px-3">
           <div className="row teacher-list-head" id="teacher_dashboard">
             <div className="col-md-6 text" id="List_title">
-              <h2>Classes in School | 2021</h2>
+              <h2>Classes for Mathematics</h2>
             </div>
             <div className="col-md-6" id="function-btns">
               <p>
@@ -98,14 +98,25 @@ function MyClass(props) {
                     className="form-control"
                     placeholder="Search"
                   />
-                  <a href="#" className="btn" type="submit">
-                    <i className="fa fa-filter"></i> Filter
-                  </a>
                 </div>
               </div>
             </div>
-            <div className="col-md-6 logo_icon">
+            {/* <div className="col-md-6 logo_icon">
               <img src={SiteSetting.SiteSetting[0].Logomin} alt="kgaswe-logo" />
+            </div> */}
+            <div class="col-md-6 search-filter">
+              <div class="form-group">
+                <div class="" id="dataTables-example_filter">
+                  <select>
+                    <option>Year</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                  </select>
+                  <a href="#" class="btn" type="submit">
+                    <i class="fa fa-filter"></i> Filter
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <div className="row">

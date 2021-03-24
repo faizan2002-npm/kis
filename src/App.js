@@ -18,13 +18,20 @@ import PerformanceBySubject from "./Pages/Performance/PerformanceBySubject";
 import PerformanceLeast from "./Pages/Performance/PerformanceLeast";
 import PerformanceList from "./Pages/Performance/PerformanceList";
 import ParentDashboard from "./Pages/Parent/index";
+import ReportsDashboard from "./Pages/Reports";
+import TestsReportsByWeeks from "./Pages/Reports/TestsReportsByWeeks";
+import TestsReportsByTerms from "./Pages/Reports/TestsReportsByTerms";
+import AssignmentsReportsByWeeks from "./Pages/Reports/AssignmentsReportsByWeeks";
+import AssignmentsReportsByTerms from "./Pages/Reports/AssignmentsReportsByTerms";
+import SubjectList from "./Pages/SubjectList";
+// import TeacherDashboard from './Pages/Teacher/index';
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={TeacherDashboard} />
           <Route path="/login" exact component={Login} />
           <Route path="/parents" exact component={Parents} />
           {/* Class */}
@@ -56,6 +63,14 @@ function App() {
           <Route path="/performance-top" exact component={PerformanceTop} />
           {/* Parent */}
           <Route path="/parent-index" exact component={ParentDashboard} />
+          {/* Reports */}
+          <Route path="/reports" exact component={ReportsDashboard} />
+          <Route path="/reports/assignments-reports-by-terms" exact component={AssignmentsReportsByTerms} />
+          <Route path="/reports/assignments-reports-by-weeks" exact component={AssignmentsReportsByWeeks} />
+          <Route path="/reports/tests-reports-by-terms" exact component={TestsReportsByTerms} />
+          <Route path="/reports/tests-reports-by-weeks" exact component={TestsReportsByWeeks} />
+        {/* Subject */}
+          <Route path="/subjects" exact component={SubjectList} />
         </Switch>
       </Router>
     </>

@@ -1,7 +1,7 @@
 import Layout from "../../Components/Layout";
 import USPs from "../../Components/USPs";
 
-function TeacherDashboard(props) {
+function ReportsDashboard(props) {
   return (
     <>
       <Layout>
@@ -34,35 +34,28 @@ function TeacherDashboard(props) {
           <div className="row">
             <USPs
               icon={true}
-              iconName="fa fa-user-plus"
-              text="Create Student Profile List"
-              href="/student"
-            />
-            <USPs
-              icon={true}
-              iconName="fa fa-graduation-cap"
-              text="My Classes"
-              href="/class"
+              iconName="fa fa-copy"
+              text="Assignments Reports<br> by Terms"
+              href="/reports/assignments-reports-by-terms"
             />
             <USPs
               icon={true}
               iconName="fa fa-copy"
-              text="Assignments"
-              href="/reports"
+              text="Assignments Reports<br> by Weeks"
+              href="/reports/assignments-reports-by-weeks"
             />
             <USPs
               icon={true}
-              iconName="fa fa-copy"
-              text="Tests"
-              href="/reports"
+              iconName="fa fa-file-text"
+              text="Tests Reports<br> by Terms"
+              href="/reports/tests-reports-by-terms"
             />
             <USPs
               icon={true}
-              iconName="fa fa-hand-o-up"
-              text="Student Performes"
-              href="/performer"
+              iconName="fa fa-file-text"
+              text="Tests Reports<br> by Weeks"
+              href="/reports/tests-reports-by-weeks"
             />
-
             <div className="col-md-12" id="calendar">
               <h2>YEAR CALENDER</h2>
               <div className="calendar"></div>
@@ -74,4 +67,4 @@ function TeacherDashboard(props) {
   );
 }
 
-export default TeacherDashboard;
+export default ReportsDashboard;

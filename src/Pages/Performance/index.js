@@ -44,12 +44,12 @@ function PerformanceDashboard(props) {
               text="Performace By Subject"
               href="/performance-subject"
             />
-            <USPs
+            {/* <USPs
               icon={true}
               iconName="fa fa-pie-chart"
               text="Performace By Grade"
               href="/performance-grade"
-            />
+            /> */}
             <USPs
               icon={true}
               iconName="fa fa-hand-o-up"

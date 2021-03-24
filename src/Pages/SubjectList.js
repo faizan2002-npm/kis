@@ -1,123 +1,28 @@
-import SiteSetting from ".././Constants/SiteSetting";
-import Layout from "./../Components/Layout";
-import TableTools from "./../Components/TableTools";
+import Layout from "../Components/Layout";
+import TableTools from "../Components/TableTools";
 import { useState } from "react";
 
-function StudentList(props) {
+function SubjectList(props) {
   const [tableHead, setTableHead] = useState([
     {
       _id: 1,
-      text: "STUDENT NO	",
+      text: "SUBJECT NAME",
     },
     {
       _id: 2,
-      text: "NAMES",
+      text: "GRADE",
     },
     {
       _id: 3,
-      text: "SURNAME",
+      text: "SHORT DESCRIPTION",
     },
-    {
-      _id: 4,
-      text: "GENDER",
-    },
-    {
-      _id: 5,
-      text: "D.O.B",
-    },
-    // {
-    //   _id: 6,
-    //   text: "NEXT OF KIN",
-    // },
-    {
-      _id: 7,
-      text: "GRADE",
-    },
-    // {
-    //   _id: 8,
-    //   text: "TEACHER",
-    // },
   ]);
   const [tableData, setTableData] = useState([
     {
       _id: 1,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
-    },
-    {
-      _id: 2,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
-    },
-    {
-      _id: 3,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
-    },
-    {
-      _id: 4,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
-    },
-    {
-      _id: 5,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
-    },
-    {
-      _id: 6,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
-    },
-    {
-      _id: 7,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
-    },
-    {
-      _id: 8,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
-
-      grade: "2A",
+      subject_name: "Mathemetics (IGCSE)",
+      grade: "Form 1, Form 2, Form 3, Form 4",
+      short_desc: "",
     },
   ]);
   return (
@@ -214,12 +119,9 @@ function StudentList(props) {
                   <tbody>
                     {tableData.map((e, index) => (
                       <tr key={`id_${index}_${e._id}`}>
-                        <th scope="row">{e.student_no}</th>
-                        <td>{e.name}</td>
-                        <td>{e.surname}</td>
-                        <td>{e.gender}</td>
-                        <td>{e.dob}</td>
+                        <th scope="row">{e.subject_name}</th>
                         <td>{e.grade}</td>
+                        <td>{e.short_desc}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -233,4 +135,4 @@ function StudentList(props) {
   );
 }
 
-export default StudentList;
+export default SubjectList;

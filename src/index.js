@@ -10,6 +10,7 @@ import "./assets/css/parent.css";
 import "./assets/css/teacher.css";
 import "./assets/css/responsive.css";
 import "./assets/css/details.css";
+import "./assets/css/all_students.css";
 // import "./assets/lib/jquery/jquery.min.js";
 // import "./assets/lib/bootstrap/js/bootstrap.min.js";
 // import "./assets/lib/wow/wow.min.js";

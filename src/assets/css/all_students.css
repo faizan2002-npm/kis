@@ -1,0 +1,58 @@
+ .welcome{
+	/*margin-bottom: 30px;*/
+}
+.dataTables_wrapper .col-sm-6{
+	width: 100%;
+}
+.dataTables_length{
+	display: none;
+}
+ .welcome .search-filter{
+	text-align: right;
+	/*position: absolute;*/
+	/*right: 35px;*/
+	z-index: 99;
+}
+ .welcome .search-filter.text-al {
+	text-align: left;
+}
+ .welcome .search-filter.text-al input{
+	width: 100% !important;
+}
+ .search-filter a.btn{
+	margin-top: 0;
+	margin-right: 0;
+}
+.search-filter input.form-control {
+    width: 100% !important;
+}
+ #List_title h2 span {
+	font-size: 0;
+	font-weight: 300;
+	height: 40px;
+	width: 1px;
+	position: relative;
+	display: inline-block;
+	background: #333;
+	vertical-align: top;
+	margin: 0 5px;
+}
+ select{
+	color: #444;
+	border: 1px solid #333;
+	background: #fff;
+	border-radius: 0;
+	margin-top: 0;
+	padding: 3px 10px;
+	margin-right: 10px;
+	height: 35px;
+}
+ select option::after{
+	content: "\f073";
+	font-family: FontAwesome;
+	position: relative;
+	display: inline-block;
+}
+ div.user{
+	padding-right: 13px;
+}

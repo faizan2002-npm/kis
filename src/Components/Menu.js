@@ -15,11 +15,11 @@ function Menu(props) {
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="/subjects">
             <i className="fa fa-graduation-cap"></i> Subjects
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/teacher-list">
             <i className="fa fa-users"></i> Teachers
           </Link>
@@ -33,14 +33,14 @@ function Menu(props) {
           <Link to="/parents">
             <i className="fa fa-user"></i> Parents
           </Link>
-        </li>
+        </li> */}
         <li>
-          <Link to="/">
+          <Link to="/student-list">
             <i className="fa fa-exchange"></i> Enrollment
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="/reports">
             <i className="fa fa-file-text"></i> Reports
           </Link>
         </li>
@@ -55,10 +55,25 @@ function Menu(props) {
           </Link>
         </li>
         <li>
+          <Link to="/performer">
+            <i className="fa fa-area-chart"></i> Performance
+          </Link>
+        </li>
+        <li>
+          <Link to="/reports">
+            <i className="fa fa-copy"></i> Assignments
+          </Link>
+        </li>
+        <li>
+          <Link to="/reports">
+            <i className="fa fa-copy"></i> Tests
+          </Link>
+        </li>
+        {/* <li>
           <Link to="/">
             <i className="fa fa-cog"></i> Configuration
           </Link>
-        </li>
+        </li> */}
       </ul>
     </>
   );

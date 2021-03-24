@@ -6,7 +6,11 @@ function USPs({ icon, iconName, text, href }) {
         <div className="icons">
           <Link id="main-btns" to={href}>
             {icon ? <i className={iconName}></i> : ""}
-            <span>{text}</span>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: text,
+              }}
+            ></span>
           </Link>
         </div>
       </div>
