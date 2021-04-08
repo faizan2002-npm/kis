@@ -1,7 +1,11 @@
+import React, { useEffect } from 'react';
 import SiteSetting from ".././Constants/SiteSetting";
 import Layout from "./../Components/Layout";
 import TableTools from "./../Components/TableTools";
 import { useState } from "react";
+import { getRequest } from "../api/request";
+import { reactLocalStorage } from 'reactjs-localstorage';
+import { Link } from 'react-router-dom';
 
 function MyClass(props) {
   const [tableHead, setTableHead] = useState([
@@ -18,29 +22,25 @@ function MyClass(props) {
       text: "YEAR",
     },
   ]);
-  const [tableData, setTableData] = useState([
-    {
-      _id: 1,
-      class: "Form 3KM",
-      capacity: "25",
-      //   class_techer: "Mr Kugara",
-      year: "2021",
-    },
-    {
-      _id: 2,
-      class: "Form 3KM",
-      capacity: "25",
-      //   class_techer: "Mr Ivan",
-      year: "2021",
-    },
-    {
-      _id: 3,
-      class: "Form 3KM",
-      capacity: "25",
-      //   class_techer: "Mrs Sethunya",
-      year: "2021",
-    },
-  ]);
+
+
+  const getAllClases = async () => {
+    try {
+      const token = localStorage.getItem('TOKEN');
+      console.log('token', token);
+      const response = await getRequest('http://192.168.0.104:3000/api/class/getAllClasses', token);
+      console.log('classes', response.result.data.classes);
+      setTableData(response.result.data.classes)
+    } catch (error) {
+      console.log('getAllClases', error.message);
+    }
+  }
+
+  useEffect(() => {
+    getAllClases();
+  }, []);
+
+  const [tableData, setTableData] = useState([]);
   return (
     <>
       <Layout>
@@ -104,16 +104,16 @@ function MyClass(props) {
             {/* <div className="col-md-6 logo_icon">
               <img src={SiteSetting.SiteSetting[0].Logomin} alt="kgaswe-logo" />
             </div> */}
-            <div class="col-md-6 search-filter">
-              <div class="form-group">
-                <div class="" id="dataTables-example_filter">
+            <div className="col-md-6 search-filter">
+              <div className="form-group">
+                <div className="" id="dataTables-example_filter">
                   <select>
                     <option>Year</option>
                     <option>2020</option>
                     <option>2021</option>
                   </select>
-                  <a href="#" class="btn" type="submit">
-                    <i class="fa fa-filter"></i> Filter
+                  <a href="#" className="btn" type="submit">
+                    <i className="fa fa-filter"></i> Filter
                   </a>
                 </div>
               </div>
@@ -133,14 +133,23 @@ function MyClass(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {tableData.map((e, index) => (
-                      <tr key={`id_${index}_${e._id}`}>
-                        <th scope="row">{e.class}</th>
-                        <td>{e.capacity}</td>
-                        {/* <td>{e.class_techer}</td> */}
-                        <td>{e.year}</td>
-                      </tr>
-                    ))}
+                    {
+                      tableData === "No classes found against this teacher" ? <tr>
+                        <td className="text-center" colSpan={3}>No classes found against this teacher</td>
+                      </tr> : tableData.map((e, index) => (
+                        <tr key={`id_${index}_${e._id}`}>
+                          <th scope="row">
+                            <Link to={`/student-list?_id=${e._id}`}>
+                            {e.name}
+                            </Link>
+                            
+                          </th>
+                          <td>{e.capacity}</td>
+                          {/* <td>{e.class_techer}</td> */}
+                          <td>{e.year}</td>
+                        </tr>
+                      ))
+                    }
                   </tbody>
                 </table>
               </div>

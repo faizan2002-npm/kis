@@ -2,6 +2,7 @@ import Layout from "./../Components/Layout";
 import TableTools from "./../Components/TableTools";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 function Student(props) {
   const [StudentData, setStudentData] = useState([
@@ -77,7 +78,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Street/Ward:",
-                      name: "name",
+                      name: "street",
                       type: "text",
                       placeholder: "Street/Ward",
                       value: "1342 Military Rd",
@@ -85,7 +86,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Town/Village:",
-                      name: "surname",
+                      name: "town",
                       type: "text",
                       placeholder: "Town/Village",
                       value: "Niagara falls",
@@ -99,7 +100,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "P O Box/Private Bag:",
-                      name: "gender",
+                      name: "poBoxAddress",
                       type: "text",
                       placeholder: "P O Box/Private Bag",
                       value: "1342 Military Rd",
@@ -107,7 +108,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Town/Village:",
-                      name: "dob",
+                      name: "postalAddresTown",
                       type: "text",
                       placeholder: "Town/Village",
                       value: "Niagara falls",
@@ -137,7 +138,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Name:",
-                      name: "name",
+                      name: "parentName",
                       type: "text",
                       placeholder: "Parent Name",
                       value: "Mathor",
@@ -145,7 +146,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Surname:",
-                      name: "surname",
+                      name: "parentSurname",
                       type: "text",
                       placeholder: "Parent Name",
                       value: "Andrea",
@@ -159,7 +160,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Relationship:",
-                      name: "gender",
+                      name: "relationship",
                       type: "text",
                       placeholder: "Relationship",
                       value: "Daughter",
@@ -167,7 +168,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Date of Birth:",
-                      name: "dob",
+                      name: "parentDob",
                       type: "text",
                       placeholder: "Date of Birth",
                       value: "22 August 1994",
@@ -192,7 +193,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Street/Ward:",
-                      name: "name",
+                      name: "parentStreet",
                       type: "text",
                       placeholder: "Street/Ward",
                       value: "1342 Military Rd",
@@ -200,7 +201,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Town/Village:",
-                      name: "surname",
+                      name: "parentTown",
                       type: "text",
                       placeholder: "Town/Village",
                       value: "Niagara falls",
@@ -214,7 +215,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "P O Box/Private Bag:",
-                      name: "gender",
+                      name: "parentPOBoxAddress",
                       type: "text",
                       placeholder: "P O Box/Private Bag",
                       value: "1342 Military Rd",
@@ -222,7 +223,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Town/Village:",
-                      name: "dob",
+                      name: "parentPOBoxToen",
                       type: "text",
                       placeholder: "Town/Village",
                       value: "Niagara falls",
@@ -236,7 +237,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Telephone(Home)",
-                      name: "gender",
+                      name: "parentTelephoneHome",
                       type: "text",
                       placeholder: "Telephone",
                       value: "00000000",
@@ -244,7 +245,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Mobile:",
-                      name: "dob",
+                      name: "parentMobile",
                       type: "text",
                       placeholder: "Mobile Number",
                       value: "00000000",
@@ -258,7 +259,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Telephone(Work)",
-                      name: "gender",
+                      name: "parentTelephoneWork",
                       type: "text",
                       placeholder: "Telephone",
                       value: "00000000",
@@ -266,7 +267,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Email:",
-                      name: "dob",
+                      name: "parentEmail",
                       type: "text",
                       placeholder: "Email Address",
                       value: "demo@mail.com",
@@ -296,7 +297,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Class:",
-                      name: "name",
+                      name: "class",
                       type: "text",
                       placeholder: "Class Name",
                       value: "2A",
@@ -304,7 +305,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Class Teacher:",
-                      name: "surname",
+                      name: "classTeacher",
                       type: "text",
                       placeholder: "Class Teacher Name",
                       value: "Salang Kebonaeng",
@@ -318,7 +319,7 @@ function Student(props) {
                     {
                       _inputID: 1,
                       label: "Student Number:",
-                      name: "gender",
+                      name: "studentNumber",
                       type: "text",
                       placeholder: "Student ID",
                       value: "1",
@@ -326,7 +327,7 @@ function Student(props) {
                     {
                       _inputID: 2,
                       label: "Number of Subjects:",
-                      name: "dob",
+                      name: "numberofSubject",
                       type: "text",
                       placeholder: "Number of Subjects",
                       value: "6",
@@ -399,50 +400,95 @@ function Student(props) {
               </p>
             </div>
           </div>
-          <form>
-            {StudentData.map((e, parentIndex) => (
-              <div className="row actions mb-3 mx-0">
-                {e.parentContent.map((e, index) => (
-                  <div className="col-md-12" key={`key_${index}-${e._id}`}>
-                    {e.content.map((e, subIndex) => (
-                      <div
-                        className="biologicals"
-                        key={`key_${subIndex}-${e._subID}`}
-                      >
-                        <h4 className="title">{e.title}</h4>
-                        <div className="row">
-                          {e.subContent.map((e, subSubIndex) => (
-                            <div
-                              className="col-lg-6 col-md-6 col-12"
-                              key={`key_${subSubIndex}-${e._subSubID}`}
-                            >
-                              <h4>{e.title}</h4>
-                              {/* {e.inputData} */}
-                              {e.inputData.map((e, innerIndex) => (
+          <Formik
+            initialValues={{
+              name: '',
+              surname: '',
+              gender: '',
+              dob: '',
+              street: '',
+              town: '',
+              poBoxAddress: '',
+              postalAddresTown: '',
+              parentName: '',
+              parentSurname: '',
+              surname: '',
+              relationship: '',
+              parentDob: '',
+              parentStreet: '',
+              parentTown: '',
+              parentPOBoxAddress: '',
+              parentPOBoxToen: '',
+              parentTelephoneHome: '',
+              parentMobile: '',
+              parentTelephoneWork: '',
+              parentEmail: '',
+              class: '',
+              classTeacher: '',
+              studentNumber: '',
+              numberofSubject: '',
+            }}
+
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          >
+            {({ isSubmitting, handleSubmit }) => (
+              <Form>
+                {/* <Field type="email" name="email" />
+           <Field type="password" name="password" /> */}
+
+
+                {StudentData.map((e, parentIndex) => (
+                  <div className="row actions mb-3 mx-0">
+                    {e.parentContent.map((e, index) => (
+                      <div className="col-md-12" key={`key_${index}-${e._id}`}>
+                        {e.content.map((e, subIndex) => (
+                          <div
+                            className="biologicals"
+                            key={`key_${subIndex}-${e._subID}`}
+                          >
+                            <h4 className="title">{e.title}</h4>
+                            <div className="row">
+                              {e.subContent.map((e, subSubIndex) => (
                                 <div
-                                  className="fowrm-group"
-                                  key={`key_${innerIndex}-${e._inputID}`}
+                                  className="col-lg-6 col-md-6 col-12"
+                                  key={`key_${subSubIndex}-${e._subSubID}`}
                                 >
-                                  <label>{e.label}</label>
-                                  <input
-                                    type={e.type}
-                                    name={e.name}
-                                    id={e.name}
-                                    defaultValue={e.value}
-                                    placeholder={e.placeholder}
-                                  />
+                                  <h4>{e.title}</h4>
+                                  {/* {e.inputData} */}
+                                  {e.inputData.map((e, innerIndex) => (
+                                    <div
+                                      className="fowrm-group"
+                                      key={`key_${innerIndex}-${e._inputID}`}
+                                    >
+                                      <label>{e.label}</label>
+                                      <Field
+                                        type={e.type}
+                                        name={e.name}
+                                        id={e.name}
+                                        defaultValue={e.value}
+                                        placeholder={e.placeholder}
+                                      />
+                                    </div>
+                                  ))}
                                 </div>
                               ))}
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        ))}
                       </div>
                     ))}
                   </div>
                 ))}
-              </div>
-            ))}
-          </form>
+
+                <button type="submit" disabled={isSubmitting}>
+                  Submit
+           </button>
+              </Form>
+            )}
+          </Formik>
+
           <div className="row actions mx-0">
             <div className="col-md-12">
               <a href="#" className="btn-click">

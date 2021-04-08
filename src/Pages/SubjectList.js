@@ -88,16 +88,16 @@ function SubjectList(props) {
             {/* <div className="col-md-6 logo_icon">
               <img src={SiteSetting.SiteSetting[0].Logomin} alt="kgaswe-logo" />
             </div> */}
-            <div class="col-md-6 search-filter">
-              <div class="form-group">
-                <div class="" id="dataTables-example_filter">
+            <div className="col-md-6 search-filter">
+              <div className="form-group">
+                <div className="" id="dataTables-example_filter">
                   <select>
                     <option>Year</option>
                     <option>2020</option>
                     <option>2021</option>
                   </select>
-                  <a href="#" class="btn" type="submit">
-                    <i class="fa fa-filter"></i> Filter
+                  <a href="#" className="btn" type="submit">
+                    <i className="fa fa-filter"></i> Filter
                   </a>
                 </div>
               </div>

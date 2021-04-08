@@ -11,6 +11,8 @@ import "./assets/css/teacher.css";
 import "./assets/css/responsive.css";
 import "./assets/css/details.css";
 import "./assets/css/all_students.css";
+// Demo styles, see 'Styles' section below for some notes on use.
+// import 'react-accessible-accordion/dist/fancy-example.css';
 // import "./assets/lib/jquery/jquery.min.js";
 // import "./assets/lib/bootstrap/js/bootstrap.min.js";
 // import "./assets/lib/wow/wow.min.js";

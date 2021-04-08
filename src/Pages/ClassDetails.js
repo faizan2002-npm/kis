@@ -266,8 +266,8 @@ function ClassDetails(props) {
             ))}
           </form>
           <div className="row actions pb-3 mb-3 mx-0">
-            <div class="biologicals class-details">
-              <h4 class="title">
+            <div className="biologicals class-details">
+              <h4 className="title">
                 CLASS LIST
                 <span
                   style={{
@@ -275,7 +275,7 @@ function ClassDetails(props) {
                   }}
                 >
                   <a href="#">
-                    Edit <i class="fa fa-edit"></i>
+                    Edit <i className="fa fa-edit"></i>
                   </a>
                 </span>
               </h4>

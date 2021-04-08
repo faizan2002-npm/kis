@@ -1,5 +1,9 @@
 import SiteSetting from ".././Constants/SiteSetting";
+import { reactLocalStorage } from 'reactjs-localstorage';
+import { useHistory } from "react-router-dom";
+
 function Header(props) {
+  const history = useHistory();
   return (
     <>
       <header className="mobile-view">
@@ -233,7 +237,13 @@ function Header(props) {
                 <p>
                   Raymond Doherty <i className="fa fa-user-circle-o"></i>
                 </p>
+
+                <button onClick={()=>{
+                  localStorage.removeItem('TOKEN');
+                  history.push("/login");
+                }}> Log out</button>
               </div>
+
             </div>
           </div>
         </div>

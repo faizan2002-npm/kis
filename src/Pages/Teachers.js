@@ -123,26 +123,26 @@ function Teachers(props) {
   return (
     <>
       <Layout>
-        <section class="heading">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-6" id="dynamic-buttons">
-                <a class="btn" href="#">
-                  <i class="fa fa-print"></i> Print
+        <section className="heading">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-6" id="dynamic-buttons">
+                <a className="btn" href="#">
+                  <i className="fa fa-print"></i> Print
                 </a>
-                <a class="btn" href="#">
-                  <i class="fa fa-paper-plane-o"></i> Email
+                <a className="btn" href="#">
+                  <i className="fa fa-paper-plane-o"></i> Email
                 </a>
-                <a class="btn" href="#">
-                  <i class="fa fa-direction-right"></i> Export
+                <a className="btn" href="#">
+                  <i className="fa fa-direction-right"></i> Export
                 </a>
               </div>
             </div>
           </div>
         </section>
         <div className="px-3">
-          <div class="row current-year-container">
-            <div class="col-md-6" id="current-term">
+          <div className="row current-year-container">
+            <div className="col-md-6" id="current-term">
               <form>
                 <select>
                   <option>Additional Mathematics</option>
@@ -151,26 +151,26 @@ function Teachers(props) {
                 </select>
               </form>
             </div>
-            <div class="col-md-6" id="">
+            <div className="col-md-6" id="">
               <h3>
                 <span>Class: </span> Form 1A
               </h3>
             </div>
           </div>
-          <div class="row" id="section-devider">
-            <div class="col-md-12">
-              <div class="devider"></div>
+          <div className="row" id="section-devider">
+            <div className="col-md-12">
+              <div className="devider"></div>
             </div>
           </div>
-          <div class="row welcome">
-            <div class="col-md-6 text">
+          <div className="row welcome">
+            <div className="col-md-6 text">
               <h3>
                 <span>Mr Kugara </span> - Class Year 2020
               </h3>
             </div>
-            <div class="col-md-6 full-term-selct">
-              <div class="row login-area p-0 bg-light">
-                <div class="col-md-6">
+            <div className="col-md-6 full-term-selct">
+              <div className="row login-area p-0 bg-light">
+                <div className="col-md-6">
                   <Field
                     element="input"
                     name="filter_from"
@@ -182,7 +182,7 @@ function Teachers(props) {
                     label={false}
                   />
                 </div>
-                <div class="col-md-6">
+                <div className="col-md-6">
                   <Field
                     element="input"
                     name="last_date"
@@ -197,10 +197,10 @@ function Teachers(props) {
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="table-responsive">
-                <table class="table table-bordered">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="table-responsive">
+                <table className="table table-bordered">
                   <thead>
                     <tr>
                       {tableHead.map((e, index) => (

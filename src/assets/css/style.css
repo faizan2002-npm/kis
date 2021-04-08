@@ -5,11 +5,28 @@
 .teacher-page .dashboard .navigation{
 min-height: 790px;
 }
+.row.welcome.biologicals.student-list-head select{
+  color: #444;
+  border: 1px solid #333;
+  background: #fff;
+  border-radius: 0;
+  margin-top: 3px;
+  padding: 3px 10px;
+  margin-right: 10px;
+  width: 27%;
+  height: 33px;
+}
+.text-left{
+  text-align: left !important;
+}
 .student-page  .dashboard  .navigation {
   min-height: 1403px;
 }
 .class-page .dashboard .navigation {
   min-height: 967px;
+}
+.m-0{
+  margin: 0 !important;
 }
 .mb-5{
   margin-bottom: 30px;

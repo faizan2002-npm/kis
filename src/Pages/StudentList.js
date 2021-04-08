@@ -1,9 +1,15 @@
 import SiteSetting from ".././Constants/SiteSetting";
 import Layout from "./../Components/Layout";
 import TableTools from "./../Components/TableTools";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+import { getRequest } from "../api/request";
+import { Link } from "react-router-dom";
 function StudentList(props) {
+  console.log(props)
+
+  console.log(props.location.search)
+
   const [tableHead, setTableHead] = useState([
     {
       _id: 1,
@@ -38,88 +44,49 @@ function StudentList(props) {
     //   text: "TEACHER",
     // },
   ]);
-  const [tableData, setTableData] = useState([
-    {
-      _id: 1,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
+  const getAllStudentOfSpecificClass = async () => {
+    try {
+      const token = localStorage.getItem('TOKEN');
+      console.log('token', token);
+      // console.log("paraamsss",params.slice(0));
 
-      grade: "2A",
-    },
-    {
-      _id: 2,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
+      var params = props.location.search.slice(5)
+      // console.log("paraamsss",params);
+      const response = await getRequest(`http://192.168.0.104:3000/api/class/getAllStudents/${params}`, token);
+      console.log('getAllStudentOfSpecificClass Response', response.result.data);
+      //  console.log(response.result.data.Students);
+      const studentData = response.result.data.Students.map((data) => {
 
-      grade: "2A",
-    },
-    {
-      _id: 3,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
+        return {
+          _id: data._id,
+          name: data.biological_details.name,
+          surname: data.biological_details.surname,
+          gender: data.biological_details.gender,
+          dob: data.biological_details.dob,
+          grade: data.biological_details.grade,
+        }
 
-      grade: "2A",
-    },
-    {
-      _id: 4,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
+        // data.biological_details,
 
-      grade: "2A",
-    },
-    {
-      _id: 5,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
+        // ...data._id    
+      })
 
-      grade: "2A",
-    },
-    {
-      _id: 6,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
+      // console.log('data.id', studentData);
+      setTableData(studentData);
+    } catch (error) {
+      console.log('getAllStudentOfSpecificClass Error', error.message);
+    }
+  }
+  useEffect(() => {
+    getAllStudentOfSpecificClass();
 
-      grade: "2A",
-    },
-    {
-      _id: 7,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
+  }, []);
+  const [tableData, setTableData] = useState([]);
 
-      grade: "2A",
-    },
-    {
-      _id: 8,
-      student_no: "KS0001",
-      name: "Joshua",
-      surname: "Thabo",
-      gender: "Female",
-      dob: "22 August 1994",
 
-      grade: "2A",
-    },
-  ]);
+  console.log('new Sata', tableData);
+
+
   return (
     <>
       <Layout>
@@ -183,16 +150,16 @@ function StudentList(props) {
             {/* <div className="col-md-6 logo_icon">
               <img src={SiteSetting.SiteSetting[0].Logomin} alt="kgaswe-logo" />
             </div> */}
-            <div class="col-md-6 search-filter">
-              <div class="form-group">
-                <div class="" id="dataTables-example_filter">
+            <div className="col-md-6 search-filter">
+              <div className="form-group">
+                <div className="" id="dataTables-example_filter">
                   <select>
                     <option>Year</option>
                     <option>2020</option>
                     <option>2021</option>
                   </select>
-                  <a href="#" class="btn" type="submit">
-                    <i class="fa fa-filter"></i> Filter
+                  <a href="#" className="btn" type="submit">
+                    <i className="fa fa-filter"></i> Filter
                   </a>
                 </div>
               </div>
@@ -212,16 +179,24 @@ function StudentList(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {tableData.map((e, index) => (
-                      <tr key={`id_${index}_${e._id}`}>
-                        <th scope="row">{e.student_no}</th>
-                        <td>{e.name}</td>
-                        <td>{e.surname}</td>
-                        <td>{e.gender}</td>
-                        <td>{e.dob}</td>
-                        <td>{e.grade}</td>
-                      </tr>
-                    ))}
+                    {
+                      tableData === "No students found against this class" ? <tr>
+                        <td className="text-center" colSpan={6}>No students found against this class</td>
+                      </tr> : tableData.map((e, index) => (
+                        <tr key={`id_${index}_${e._id}`}>
+                          {/* {e._id}</th> */}
+                          <th scope="row">
+                            <Link to={`/student?_id=${e._id}`}>
+                              {e._id}
+                            </Link></th>
+                          <td>{e.name}</td>
+                          <td>{e.surname}</td>
+                          <td>{e.gender}</td>
+                          <td>{e.dob}</td>
+                          <td>{e.grade}</td>
+                        </tr>
+                      ))
+                    }
                   </tbody>
                 </table>
               </div>
