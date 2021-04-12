@@ -1,8 +1,9 @@
 import Layout from "./../Components/Layout";
 import TableTools from "./../Components/TableTools";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { getRequest } from "../api/request";
 
 function Student(props) {
   const [StudentData, setStudentData] = useState([
@@ -341,6 +342,29 @@ function Student(props) {
       ],
     },
   ]);
+  const [apiResponse, setAPIResponse] = useState([]);
+
+  const getClassStudent = async () => {
+    try {
+      const token = localStorage.getItem("TOKEN");
+      // console.log("token", token);
+      var params = props.location.search.slice(5);
+      const response = await getRequest(
+        `/api/class/getStudent/${params}`,
+        token
+      );
+      // console.log("classes", response.result.data.Student);
+      setAPIResponse(response.result.data);
+      console.log("apiResponse", apiResponse);
+    } catch (error) {
+      console.log("getClassStudent", error.message);
+    }
+  };
+
+  useEffect(() => {
+    getClassStudent();
+  }, []);
+
   return (
     <>
       <Layout>
@@ -402,33 +426,32 @@ function Student(props) {
           </div>
           <Formik
             initialValues={{
-              name: '',
-              surname: '',
-              gender: '',
-              dob: '',
-              street: '',
-              town: '',
-              poBoxAddress: '',
-              postalAddresTown: '',
-              parentName: '',
-              parentSurname: '',
-              surname: '',
-              relationship: '',
-              parentDob: '',
-              parentStreet: '',
-              parentTown: '',
-              parentPOBoxAddress: '',
-              parentPOBoxToen: '',
-              parentTelephoneHome: '',
-              parentMobile: '',
-              parentTelephoneWork: '',
-              parentEmail: '',
-              class: '',
-              classTeacher: '',
-              studentNumber: '',
-              numberofSubject: '',
+              name: "",
+              surname: "",
+              gender: "",
+              dob: "",
+              street: "",
+              town: "",
+              poBoxAddress: "",
+              postalAddresTown: "",
+              parentName: "",
+              parentSurname: "",
+              surname: "",
+              relationship: "",
+              parentDob: "",
+              parentStreet: "",
+              parentTown: "",
+              parentPOBoxAddress: "",
+              parentPOBoxToen: "",
+              parentTelephoneHome: "",
+              parentMobile: "",
+              parentTelephoneWork: "",
+              parentEmail: "",
+              class: "",
+              classTeacher: "",
+              studentNumber: "",
+              numberofSubject: "",
             }}
-
             onSubmit={(values) => {
               console.log(values);
             }}
@@ -437,7 +460,6 @@ function Student(props) {
               <Form>
                 {/* <Field type="email" name="email" />
            <Field type="password" name="password" /> */}
-
 
                 {StudentData.map((e, parentIndex) => (
                   <div className="row actions mb-3 mx-0">
@@ -484,7 +506,7 @@ function Student(props) {
 
                 <button type="submit" disabled={isSubmitting}>
                   Submit
-           </button>
+                </button>
               </Form>
             )}
           </Formik>

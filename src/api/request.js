@@ -1,7 +1,7 @@
-const axios = require('axios');
-const qs = require('querystring');
+const axios = require("axios");
+const qs = require("querystring");
 
-// const baseURL = 'https://api.volatia.com/';
+const baseURL = "http://172.20.10.3:3000";
 
 export const postRequest = async (url, body = {}, headers = {}) => {
   let xform = qs.stringify(body);
@@ -10,7 +10,7 @@ export const postRequest = async (url, body = {}, headers = {}) => {
 
   let config = {
     headers: {
-      'Content-Type': 'application/x-www-form-ur	lencoded',
+      "Content-Type": "application/x-www-form-ur	lencoded",
       ...headers,
     },
   };
@@ -18,13 +18,13 @@ export const postRequest = async (url, body = {}, headers = {}) => {
   let returnValue;
 
   await axios
-  // baseURL + 
-    .post(url, xform, config)
+    // baseURL +
+    .post(baseURL + url, xform, config)
     .then((result) => {
-      returnValue = {result: result, error: null};
+      returnValue = { result: result, error: null };
     })
     .catch((err) => {
-      returnValue = {result: null, error: err};
+      returnValue = { result: null, error: err };
     });
   return returnValue;
 };
@@ -33,7 +33,7 @@ export const postRequestForm = async (url, token, body = {}, headers = {}) => {
   let config = {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       ...headers,
     },
   };
@@ -41,13 +41,13 @@ export const postRequestForm = async (url, token, body = {}, headers = {}) => {
   let returnValue;
 
   await axios
-  // baseURL + 
-    .post(url, body, config)
+    // baseURL +
+    .post(baseURL + url, body, config)
     .then((result) => {
-      returnValue = {result: result, error: null};
+      returnValue = { result: result, error: null };
     })
     .catch((err) => {
-      returnValue = {result: null, error: err};
+      returnValue = { result: null, error: err };
     });
   return returnValue;
 };
@@ -56,7 +56,7 @@ export const postWithParams = async (url, token, params = {}, headers = {}) => {
   let config = {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded",
       ...headers,
     },
     params: {
@@ -67,13 +67,13 @@ export const postWithParams = async (url, token, params = {}, headers = {}) => {
   let returnValue;
 
   await axios
-  // baseURL + 
-    .post(url, {}, config)
+    // baseURL +
+    .post(baseURL + url, {}, config)
     .then((result) => {
-      returnValue = {result: result, error: null};
+      returnValue = { result: result, error: null };
     })
     .catch((err) => {
-      returnValue = {result: null, error: err};
+      returnValue = { result: null, error: err };
     });
   return returnValue;
 };
@@ -82,7 +82,7 @@ export const getRequest = async (url, token, params = {}, headers = {}) => {
   let config = {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded",
       ...headers,
     },
     params: {
@@ -93,13 +93,13 @@ export const getRequest = async (url, token, params = {}, headers = {}) => {
   let returnValue;
 
   await axios
-  // baseURL + 
-    .get(url, config)
+    // baseURL +
+    .get(baseURL + url, config)
     .then((result) => {
-      returnValue = {result: result, error: null};
+      returnValue = { result: result, error: null };
     })
     .catch((err) => {
-      returnValue = {result: null, error: err};
+      returnValue = { result: null, error: err };
     });
   return returnValue;
 };

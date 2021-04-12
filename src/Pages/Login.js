@@ -3,10 +3,10 @@ import SiteSetting from ".././Constants/SiteSetting";
 import Field from "./../Components/Field";
 import { useHistory } from "react-router-dom";
 
-import { Formik, Form, Field as FormikField, ErrorMessage } from 'formik';
+import { Formik, Form, Field as FormikField, ErrorMessage } from "formik";
 import { postRequestForm } from "../api/request";
 // postRequestForm
-import { reactLocalStorage } from 'reactjs-localstorage';
+import { reactLocalStorage } from "reactjs-localstorage";
 
 function Login(props) {
   const history = useHistory();
@@ -40,19 +40,24 @@ function Login(props) {
                 <article className="card-body">
                   <Formik
                     initialValues={{
-                      email: '',
-                      password: '',
+                      email: "",
+                      password: "",
                     }}
-
                     onSubmit={async (values) => {
                       console.log(values);
 
                       try {
-
-                        const response = await postRequestForm('http://192.168.0.104:3000/api/auth/login', '', values)
-                        localStorage.setItem('TOKEN', response.result.data.token);
+                        const response = await postRequestForm(
+                          "/api/auth/login",
+                          "",
+                          values
+                        );
+                        localStorage.setItem(
+                          "TOKEN",
+                          response.result.data.token
+                        );
                         // console.log('TOKEN', response.result .data.token);
-                        console.log('status', response.result.status);
+                        console.log("status", response.result.status);
                         if (response.result.status === 200) {
                           console.log("logged in!");
                           if (response.result.data.user.type === "teacher") {
@@ -61,10 +66,8 @@ function Login(props) {
                           }
                         }
                       } catch (error) {
-                        console.log('Login APi error', error.message);
-
+                        console.log("Login APi error", error.message);
                       }
-
                     }}
                   >
                     <Form>
@@ -89,12 +92,16 @@ function Login(props) {
                         label={false}
                       />
 
-                      <Field element="button" btnType="submit" btnText="Submit" />
+                      <Field
+                        element="button"
+                        btnType="submit"
+                        btnText="Submit"
+                      />
 
                       <p className="text-center">
                         <a href="#" className="btn">
                           Forgot password?
-                      </a>
+                        </a>
                       </p>
                     </Form>
                   </Formik>

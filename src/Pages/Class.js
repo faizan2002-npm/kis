@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import SiteSetting from ".././Constants/SiteSetting";
 import Layout from "./../Components/Layout";
 import TableTools from "./../Components/TableTools";
 import { useState } from "react";
 import { getRequest } from "../api/request";
-import { reactLocalStorage } from 'reactjs-localstorage';
-import { Link } from 'react-router-dom';
+import { reactLocalStorage } from "reactjs-localstorage";
+import { Link } from "react-router-dom";
 
 function MyClass(props) {
   const [tableHead, setTableHead] = useState([
@@ -23,18 +23,17 @@ function MyClass(props) {
     },
   ]);
 
-
   const getAllClases = async () => {
     try {
-      const token = localStorage.getItem('TOKEN');
-      console.log('token', token);
-      const response = await getRequest('http://192.168.0.104:3000/api/class/getAllClasses', token);
-      console.log('classes', response.result.data.classes);
-      setTableData(response.result.data.classes)
+      const token = localStorage.getItem("TOKEN");
+      console.log("token", token);
+      const response = await getRequest("/api/class/getAllClasses", token);
+      console.log("classes", response.result.data.classes);
+      setTableData(response.result.data.classes);
     } catch (error) {
-      console.log('getAllClases', error.message);
+      console.log("getAllClases", error.message);
     }
-  }
+  };
 
   useEffect(() => {
     getAllClases();
@@ -133,23 +132,26 @@ function MyClass(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {
-                      tableData === "No classes found against this teacher" ? <tr>
-                        <td className="text-center" colSpan={3}>No classes found against this teacher</td>
-                      </tr> : tableData.map((e, index) => (
+                    {tableData === "No classes found against this teacher" ? (
+                      <tr>
+                        <td className="text-center" colSpan={3}>
+                          No classes found against this teacher
+                        </td>
+                      </tr>
+                    ) : (
+                      tableData.map((e, index) => (
                         <tr key={`id_${index}_${e._id}`}>
                           <th scope="row">
                             <Link to={`/student-list?_id=${e._id}`}>
-                            {e.name}
+                              {e.name}
                             </Link>
-                            
                           </th>
                           <td>{e.capacity}</td>
                           {/* <td>{e.class_techer}</td> */}
                           <td>{e.year}</td>
                         </tr>
                       ))
-                    }
+                    )}
                   </tbody>
                 </table>
               </div>

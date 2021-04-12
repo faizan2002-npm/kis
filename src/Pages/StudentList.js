@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 import { getRequest } from "../api/request";
 import { Link } from "react-router-dom";
 function StudentList(props) {
-  console.log(props)
+  console.log(props);
 
-  console.log(props.location.search)
+  console.log(props.location.search);
 
   const [tableHead, setTableHead] = useState([
     {
@@ -46,17 +46,22 @@ function StudentList(props) {
   ]);
   const getAllStudentOfSpecificClass = async () => {
     try {
-      const token = localStorage.getItem('TOKEN');
-      console.log('token', token);
+      const token = localStorage.getItem("TOKEN");
+      console.log("token", token);
       // console.log("paraamsss",params.slice(0));
 
-      var params = props.location.search.slice(5)
+      var params = props.location.search.slice(5);
       // console.log("paraamsss",params);
-      const response = await getRequest(`http://192.168.0.104:3000/api/class/getAllStudents/${params}`, token);
-      console.log('getAllStudentOfSpecificClass Response', response.result.data);
+      const response = await getRequest(
+        `/api/class/getAllStudents/${params}`,
+        token
+      );
+      console.log(
+        "getAllStudentOfSpecificClass Response",
+        response.result.data
+      );
       //  console.log(response.result.data.Students);
       const studentData = response.result.data.Students.map((data) => {
-
         return {
           _id: data._id,
           name: data.biological_details.name,
@@ -64,28 +69,25 @@ function StudentList(props) {
           gender: data.biological_details.gender,
           dob: data.biological_details.dob,
           grade: data.biological_details.grade,
-        }
+        };
 
         // data.biological_details,
 
-        // ...data._id    
-      })
+        // ...data._id
+      });
 
       // console.log('data.id', studentData);
       setTableData(studentData);
     } catch (error) {
-      console.log('getAllStudentOfSpecificClass Error', error.message);
+      console.log("getAllStudentOfSpecificClass Error", error.message);
     }
-  }
+  };
   useEffect(() => {
     getAllStudentOfSpecificClass();
-
   }, []);
   const [tableData, setTableData] = useState([]);
 
-
-  console.log('new Sata', tableData);
-
+  console.log("new Sata", tableData);
 
   return (
     <>
@@ -179,16 +181,19 @@ function StudentList(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {
-                      tableData === "No students found against this class" ? <tr>
-                        <td className="text-center" colSpan={6}>No students found against this class</td>
-                      </tr> : tableData.map((e, index) => (
+                    {tableData === "No students found against this class" ? (
+                      <tr>
+                        <td className="text-center" colSpan={6}>
+                          No students found against this class
+                        </td>
+                      </tr>
+                    ) : (
+                      tableData.map((e, index) => (
                         <tr key={`id_${index}_${e._id}`}>
                           {/* {e._id}</th> */}
                           <th scope="row">
-                            <Link to={`/student?_id=${e._id}`}>
-                              {e._id}
-                            </Link></th>
+                            <Link to={`/student?_id=${e._id}`}>{e._id}</Link>
+                          </th>
                           <td>{e.name}</td>
                           <td>{e.surname}</td>
                           <td>{e.gender}</td>
@@ -196,7 +201,7 @@ function StudentList(props) {
                           <td>{e.grade}</td>
                         </tr>
                       ))
-                    }
+                    )}
                   </tbody>
                 </table>
               </div>

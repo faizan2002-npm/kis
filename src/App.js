@@ -65,11 +65,27 @@ function App() {
           <Route path="/parent-index" exact component={ParentDashboard} />
           {/* Reports */}
           <Route path="/reports" exact component={ReportsDashboard} />
-          <Route path="/reports/assignments-reports-by-terms" exact component={AssignmentsReportsByTerms} />
-          <Route path="/reports/assignments-reports-by-weeks" exact component={AssignmentsReportsByWeeks} />
-          <Route path="/reports/tests-reports-by-terms" exact component={TestsReportsByTerms} />
-          <Route path="/reports/tests-reports-by-weeks" exact component={TestsReportsByWeeks} />
-        {/* Subject */}
+          <Route
+            path="/reports/assignments-reports-by-terms"
+            exact
+            component={AssignmentsReportsByTerms}
+          />
+          <Route
+            path="/reports/assignments-reports-by-weeks"
+            exact
+            component={AssignmentsReportsByWeeks}
+          />
+          <Route
+            path="/reports/tests-reports-by-terms"
+            exact
+            component={TestsReportsByTerms}
+          />
+          <Route
+            path="/reports/tests-reports-by-weeks"
+            exact
+            component={TestsReportsByWeeks}
+          />
+          {/* Subject */}
           <Route path="/subjects" exact component={SubjectList} />
         </Switch>
       </Router>
