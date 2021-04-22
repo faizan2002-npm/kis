@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Pages/Home";
+// import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Parents from "./Pages/Parents";
 import Teachers from "./Pages/Teachers";

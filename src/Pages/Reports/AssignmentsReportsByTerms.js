@@ -1,117 +1,414 @@
+import React, { Component } from "react";
 import SiteSetting from "../../Constants/SiteSetting";
 import Layout from "../../Components/Layout";
 import TableTools from "../../Components/TableTools";
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
-import Collapsible from 'react-collapsible';
+import Collapsible from "react-collapsible";
 
-function AssignmentsReportsByTerms(props) {
-  return (
-    <>
-      <Layout>
-        <section className="heading">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-6" id="dynamic-buttons">
-                <TableTools
-                  href="#"
-                  text="Prnt"
-                  icon={true}
-                  iconName="fa fa-print"
-                />
-                <TableTools
-                  href="#"
-                  icon={true}
-                  text="Email"
-                  iconName="fa fa-paper-plane-o"
-                />
-                <TableTools
-                  href="#"
-                  icon={true}
-                  iconName="fa-direction-right"
-                  text="Export"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-        <div
-          id="teacher_dashboard"
-          style={{
-            backgroundColor: "#e8e8e8",
-          }}
-        >
-          <div className="row student-list-head mx-0">
-            <div className="col-md-5 text" id="List_title">
-              <div className="user_icon">
-                <i className="fa fa-user-circle"></i>
-              </div>
-              <div className="student_creeds">
-                <h3 id="full_S_name">Assignments Report | 2021</h3>
-              </div>
-            </div>
-            <div className="col-md-7" id="function-btns">
-              <p>
-                <a href="#">
-                  Edit <i className="fa fa-edit"></i>
-                </a>
-              </p>
-            </div>
-          </div>
-          <div className="row pr20 mx-0">
-            <div className="col-md-12 ">
-
-              <div className="row welcome biologicals student-list-head mx-0">
-                <div className="col-md-6 search-filter text-left">
-                  <div className="form-group m-0">
-                    <select className="form-control">
-                      <option>Year</option>
-                      <option>2020</option>
-                      <option>2021</option>
-                    </select>
-                    <a href="#" className="btn" type="submit">
-                      <i className="fa fa-filter"></i> Filter
-                  </a>
-                  </div>
+class AssignmentsReportsByTerm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableHead: [
+        {
+          _id: 1,
+          text: "POSITION",
+        },
+        {
+          _id: 2,
+          text: "STUDENT NAME",
+        },
+        {
+          _id: 3,
+          text: "AVERAGE SCORE",
+        },
+        {
+          _id: 4,
+          text: "CLASS",
+        },
+        {
+          _id: 5,
+          text: "YEAR",
+        },
+      ],
+      tableData: [
+        {
+          _id: 1,
+          position: "01",
+          name: "KAOSI MOREETSI DITEBO",
+          score: "5.5",
+          class: "",
+          year: "2020",
+        },
+        {
+          _id: 2,
+          position: "02",
+          name: "RAJNANDINI GHOSH",
+          score: "5.4",
+          class: "",
+          year: "2020",
+        },
+        {
+          _id: 3,
+          position: "03",
+          name: "LOAGO JOSEPH MATOME SEBOLA	",
+          score: "5.3",
+          class: "",
+          year: "2020",
+        },
+        {
+          _id: 4,
+          position: "04",
+          name: "SEKAO MAATLA PELAELO",
+          score: "5.2",
+          class: "",
+          year: "2020",
+        },
+        {
+          _id: 5,
+          position: "05",
+          name: "AAKRITI GUPTA",
+          score: "5.1",
+          class: "",
+          year: "2020",
+        },
+      ],
+      buttonClicked: false,
+      score: [],
+    };
+  }
+  render() {
+    return (
+      <>
+        <Layout>
+          <section className="heading">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-md-6" id="dynamic-buttons">
+                  <TableTools
+                    href="#"
+                    text="Prnt"
+                    icon={true}
+                    iconName="fa fa-print"
+                  />
+                  <TableTools
+                    href="#"
+                    icon={true}
+                    text="Email"
+                    iconName="fa fa-paper-plane-o"
+                  />
+                  <TableTools
+                    href="#"
+                    icon={true}
+                    iconName="fa-direction-right"
+                    text="Export"
+                  />
                 </div>
-                {/* <div className="col-md-6 logo_icon">
+              </div>
+            </div>
+          </section>
+          <div
+            id="teacher_dashboard"
+            style={{
+              backgroundColor: "#e8e8e8",
+            }}
+          >
+            <div className="row student-list-head mx-0">
+              <div className="col-md-5 text" id="List_title">
+                <div className="user_icon">
+                  <i className="fa fa-user-circle"></i>
+                </div>
+                <div className="student_creeds">
+                  <h3 id="full_S_name">Assignments Report | 2021</h3>
+                </div>
+              </div>
+              <div className="col-md-7" id="function-btns">
+                <p>
+                  <a href="#">
+                    Edit <i className="fa fa-edit"></i>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div className="row pr20 mx-0">
+              <div className="col-md-12 ">
+                <div className="row welcome biologicals student-list-head mx-0">
+                  <div className="col-md-6 search-filter text-left">
+                    <div className="form-group m-0">
+                      <select className="form-control">
+                        <option>Year</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                      </select>
+                      <a href="#" className="btn" type="submit">
+                        <i className="fa fa-filter"></i> Filter
+                      </a>
+                    </div>
+                  </div>
+                  {/* <div className="col-md-6 logo_icon">
               <img src={SiteSetting.SiteSetting[0].Logomin} alt="kgaswe-logo" />
             </div> */}
-              </div>
+                </div>
 
-              <div className="biologicals class-details reports">
-                <h4 className="title">Mathematics Term Reports </h4>
-                <Collapsible trigger="Start here 1">
-      <p>
-        This is the collapsible content. It can be any element or React
-        component you like.
-      </p>
-      <p>
-        It can even be another Collapsible component. Check out the next
-        section!
-      </p>
-    </Collapsible>
-    <Collapsible trigger="Start here 2">
-      <p>
-        This is the collapsible content. It can be any element or React
-        component you like.
-      </p>
-      <p>
-        It can even be another Collapsible component. Check out the next
-        section!
-      </p>
-    </Collapsible>
-    <Collapsible trigger="Start here 3">
-      <p>
-        This is the collapsible content. It can be any element or React
-        component you like.
-      </p>
-      <p>
-        It can even be another Collapsible component. Check out the next
-        section!
-      </p>
-    </Collapsible>
-                {/* <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div className="biologicals class-details reports">
+                  <h4 className="title">Mathematics Term Reports </h4>
+                  <Collapsible trigger="Week 1">
+                    <div className="table-responsive">
+                      <table className="table table-bordered">
+                        <thead>
+                          <tr>
+                            {this.state.tableHead.map((e, index) => (
+                              <th scope="col" key={`id_${index}_${e._id}`}>
+                                {e.text}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.state.tableData.map((e, index) => (
+                            <tr key={`id_${index}_${e._id}`}>
+                              <th scope="row">{e.position}</th>
+                              <td>{e.name}</td>
+
+                              <td>
+                                {" "}
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.score}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].score = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.score
+                                )}
+                              </td>
+                              <td>
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.class}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].class = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.class
+                                )}
+                              </td>
+                              <td>
+                                {" "}
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.year}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].year = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.year
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="row actions mx-0">
+                      <div className="col-md-12 text-center">
+                        <a
+                          href="#"
+                          className="btn-click"
+                          onClick={() => this.setState({ buttonClicked: true })}
+                        >
+                          Edit
+                        </a>
+                        <a href="#" className="btn-click">
+                          Delete
+                        </a>
+                        <Link to="/performer" className="btn-click">
+                          Back
+                        </Link>
+                      </div>
+                    </div>
+                  </Collapsible>
+                  <Collapsible trigger="Week 2">
+                    <div className="table-responsive">
+                      <table className="table table-bordered">
+                        <thead>
+                          <tr>
+                            {this.state.tableHead.map((e, index) => (
+                              <th scope="col" key={`id_${index}_${e._id}`}>
+                                {e.text}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.state.tableData.map((e, index) => (
+                            <tr key={`id_${index}_${e._id}`}>
+                              <th scope="row">{e.position}</th>
+                              <td>{e.name}</td>
+
+                              <td>
+                                {" "}
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.score}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].score = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.score
+                                )}
+                              </td>
+                              <td>
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.class}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].class = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.class
+                                )}
+                              </td>
+                              <td>
+                                {" "}
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.year}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].year = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.year
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="row actions mx-0">
+                      <div className="col-md-12 text-center">
+                        <a
+                          href="#"
+                          className="btn-click"
+                          onClick={() => this.setState({ buttonClicked: true })}
+                        >
+                          Edit
+                        </a>
+                        <a href="#" className="btn-click">
+                          Delete
+                        </a>
+                        <Link to="/performer" className="btn-click">
+                          Back
+                        </Link>
+                      </div>
+                    </div>
+                  </Collapsible>
+                  <Collapsible trigger="Week 3">
+                    <div className="table-responsive">
+                      <table className="table table-bordered">
+                        <thead>
+                          <tr>
+                            {this.state.tableHead.map((e, index) => (
+                              <th scope="col" key={`id_${index}_${e._id}`}>
+                                {e.text}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.state.tableData.map((e, index) => (
+                            <tr key={`id_${index}_${e._id}`}>
+                              <th scope="row">{e.position}</th>
+                              <td>{e.name}</td>
+
+                              <td>
+                                {" "}
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.score}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].score = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.score
+                                )}
+                              </td>
+                              <td>
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.class}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].class = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.class
+                                )}
+                              </td>
+                              <td>
+                                {" "}
+                                {this.state.buttonClicked ? (
+                                  <input
+                                    value={e.year}
+                                    onChange={(event) => {
+                                      const score = [...this.state.tableData];
+                                      score[index].year = event.target.value; // Update it with the modified email.
+                                      this.setState({ score });
+                                    }}
+                                  />
+                                ) : (
+                                  e.year
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="row actions mx-0">
+                      <div className="col-md-12 text-center">
+                        <a
+                          href="#"
+                          className="btn-click"
+                          onClick={() => this.setState({ buttonClicked: true })}
+                        >
+                          Edit
+                        </a>
+                        <a href="#" className="btn-click">
+                          Delete
+                        </a>
+                        <Link to="/performer" className="btn-click">
+                          Back
+                        </Link>
+                      </div>
+                    </div>
+                  </Collapsible>
+                  {/* <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                   <div className="panel panel-default">
                     <div className="panel-heading" role="tab" id="headingOne">
@@ -382,15 +679,14 @@ function AssignmentsReportsByTerms(props) {
                   </div>
 
                 </div> */}
-
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
-      </Layout>
-    </>
-  );
+        </Layout>
+      </>
+    );
+  }
 }
 
-export default AssignmentsReportsByTerms;
+export default AssignmentsReportsByTerm;

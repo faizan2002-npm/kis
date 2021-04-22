@@ -1,7 +1,7 @@
 const axios = require("axios");
 const qs = require("querystring");
 
-const baseURL = "http://172.20.10.3:3000";
+const baseURL = "http://192.168.1.11:3000";
 
 export const postRequest = async (url, body = {}, headers = {}) => {
   let xform = qs.stringify(body);
@@ -95,6 +95,30 @@ export const getRequest = async (url, token, params = {}, headers = {}) => {
   await axios
     // baseURL +
     .get(baseURL + url, config)
+    .then((result) => {
+      returnValue = { result: result, error: null };
+    })
+    .catch((err) => {
+      returnValue = { result: null, error: err };
+    });
+  return returnValue;
+};
+
+export const putRequest = async (url, token, body = {}, headers = {}) => {
+  // let xform = qs.stringify(body)
+
+  let config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      ...headers,
+    },
+  };
+
+  let returnValue;
+
+  await axios
+    .put(baseURL + url, {}, config)
     .then((result) => {
       returnValue = { result: result, error: null };
     })
